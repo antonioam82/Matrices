@@ -1,10 +1,11 @@
 print("JUEGO DE LA VIDA")
 import time
-from VALID import OKI
+from VALID import OKI, OK
 import subprocess
 filas=OKI(input("Introduce el número de filas: "))
 columnas=OKI(input("Introduce el número de columnas: "))
 pul=OKI(input("Introduce el número de pulsos: "))
+vel=OK(input("Escribe periodicidad de pulso: "))
 print("¿Que desea ver?: ")
 print("A) OSCILADOR")
 print("B) PLANEADOR")
@@ -26,11 +27,17 @@ if ver==("A"):
     tablero[5][5]=True
     tablero[6][5]=True
 else:
-    tablero[7][7]=True
-    tablero[8][8]=True
-    tablero[8][9]=True
-    tablero[7][9]=True
-    tablero[6][9]=True
+    tablero[2][2]=True
+    tablero[3][3]=True
+    tablero[3][4]=True
+    tablero[2][4]=True
+    tablero[1][4]=True
+    #tablero[20][20]=True #TABLERO DE 22*22
+    #tablero[19][19]=True
+    #tablero[19][18]=True
+    #tablero[20][18]=True
+    #tablero[21][18]=True
+    
 print("JUEGO DE LA VIDA")
 print("TIME:  0")
 for y in range(filas):
@@ -40,7 +47,7 @@ for y in range(filas):
         else:
             print("."+" ",end="")
     print()
-time.sleep(2)
+time.sleep(vel)
 subprocess.call(["cmd.exe","/C","cls"])
 
 pulsos=pul
@@ -87,8 +94,16 @@ for t in range(pulsos):
             else:
                 print("."+" ",end="")
         print()
-    time.sleep(2)
+    time.sleep(vel)
     subprocess.call(["cmd.exe","/C","cls"])
+
+
+    
+
+
+
+
+
 
 
     
