@@ -1,2 +1,2 @@
 # Matrices
-Ejercicos con matrices
+Ejercicios con matrices
