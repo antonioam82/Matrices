@@ -2,26 +2,46 @@ print("JUEGO DE LA VIDA")
 import time
 from VALID import OKI, OK
 import subprocess
-filas=OKI(input("Introduce el número de filas: "))
-columnas=OKI(input("Introduce el número de columnas: "))
-pul=OKI(input("Introduce el número de pulsos: "))
-vel=OK(input("Escribe periodicidad de pulso: "))
+
+def nval(n):
+    while n<=0:
+        n=OKI(input("Introduce un número mayor de 0: "))
+    return n
+
+def nvalcf(n,t):
+    if t==("f"):
+        while n<7:
+            n=OKI(input("Introduce un número mayor de 6: "))
+    else:
+        while n<6:
+            n=OKI(input("Introduce un número mayor de 5: "))
+    return n
+
 print("¿Que desea ver?: ")
 print("A) OSCILADOR")
 print("B) PLANEADOR")
+print("C) COLISION PLANEADORES")
 ver=input("Escriba aquí su opción: ")
-while ver!=("A") and ver!=("B"):
-    ver=input("Escriba \'A\' o \'B\' según su opción: ")
-subprocess.call(["cmd.exe","/C","cls"])
+while ver!=("A") and ver!=("B") and ver!=("C"):
+    ver=input("Escriba \'A\', \'B\',o\'C\' según su opción: ")
 
+
+if ver==("A") or ver==("B"):
+    filas=nvalcf(OKI(input("Introduce el número de filas: ")),"f")
+    columnas=nvalcf(OKI(input("Introduce el número de columnas: ")),"c")
+else:
+    filas=22
+    columnas=22
+    
+pul=nval(OKI(input("Introduce el número de pulsos: ")))
+vel=OK(input("Escribe periodicidad de pulso: "))
 tablero=[]
 el=0
+subprocess.call(["cmd.exe","/C","cls"])
 
 for i in range(filas):
     tablero.append(([False])*columnas)
-    #print(tablero[el])
-    #el+=1
-
+    
 if ver==("A"):
     tablero[4][5]=True
     tablero[5][5]=True
@@ -32,11 +52,17 @@ else:
     tablero[3][4]=True
     tablero[2][4]=True
     tablero[1][4]=True
-    #tablero[20][20]=True #TABLERO DE 22*22
-    #tablero[19][19]=True
-    #tablero[19][18]=True
-    #tablero[20][18]=True
-    #tablero[21][18]=True
+    if ver==("C"):
+        filas=22
+        columnas=22
+        tablero[20][20]=True 
+        tablero[19][19]=True
+        tablero[19][18]=True
+        tablero[20][18]=True
+        tablero[21][18]=True
+        
+
+    
     
 print("JUEGO DE LA VIDA")
 print("TIME:  0")
@@ -95,7 +121,9 @@ for t in range(pulsos):
                 print("."+" ",end="")
         print()
     time.sleep(vel)
-    subprocess.call(["cmd.exe","/C","cls"])
+    if t<pulsos:
+        subprocess.call(["cmd.exe","/C","cls"])
+
 
 
     
