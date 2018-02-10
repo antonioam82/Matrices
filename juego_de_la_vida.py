@@ -21,10 +21,11 @@ print("¿Que desea ver?: ")
 print("A) OSCILADOR")
 print("B) PLANEADOR")
 print("C) COLISION PLANEADORES")
+print("D) RANA")
 ver=input("Escriba aquí su opción: ")
-while ver!=("A") and ver!=("B") and ver!=("C"):
-    ver=input("Escriba \'A\', \'B\',o\'C\' según su opción: ")
-
+while ver!=("A") and ver!=("B") and ver!=("C") and ver!=("D"):
+    ver=input("Escriba \'A\', \'B\',\'C\'o\'D\' según su opción: ")
+panel=input("Escriba caracter para el tablero: ")
 
 if ver==("A") or ver==("B"):
     filas=nvalcf(OKI(input("Introduce el número de filas: ")),"f")
@@ -46,6 +47,17 @@ if ver==("A"):
     tablero[4][5]=True
     tablero[5][5]=True
     tablero[6][5]=True
+if ver==("D"):
+    filas=22
+    columnas=22
+    tablero[20][20]=True
+    tablero[20][19]=True
+    tablero[20][18]=True
+    tablero[19][19]=True
+    tablero[19][18]=True
+    tablero[19][17]=True
+
+
 else:
     tablero[2][2]=True
     tablero[3][3]=True
@@ -60,7 +72,6 @@ else:
         tablero[19][18]=True
         tablero[20][18]=True
         tablero[21][18]=True
-        
 
     
     
@@ -71,7 +82,7 @@ for y in range(filas):
         if tablero[y][x]:
             print("*"+" ",end="")
         else:
-            print("."+" ",end="")
+            print(panel+" ",end="")
     print()
 time.sleep(vel)
 subprocess.call(["cmd.exe","/C","cls"])
@@ -118,11 +129,14 @@ for t in range(pulsos):
             if tablero[y][x]:
                 print("*"+" ",end="")
             else:
-                print("."+" ",end="")
+                print(panel+" ",end="")
         print()
     time.sleep(vel)
     if t<pulsos:
         subprocess.call(["cmd.exe","/C","cls"])
+
+
+    
 
 
 
