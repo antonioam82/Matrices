@@ -1,6 +1,6 @@
 import time
 import subprocess
-from VALID import ns, OK
+from VALID import ns, OK, OKI, opt
 def nval(n):
     while n<=0:
         n=OKI(input("Introduce un número mayor de 0: "))
@@ -11,14 +11,13 @@ while True:
     print("A) OSCILADOR")
     print("B) PLANEADOR")
     print("C) COLISION PLANEADORES")
-    print("D) RANA")
-    ver=input("Escriba aquí su opción: ")
+    ver=opt(input("Escriba aquí su opción: "),["A","B","C"])
     vel=OK(input("Introduce segundos entre cada pulso: "))
     panel=(".")
     filas=22
     colum=22
     
-    pul=nval(int(input("Introduce número de pulsos: ")))
+    pul=nval(OKI(input("Introduce número de pulsos: ")))
 
     tablero=[]
     el=0
